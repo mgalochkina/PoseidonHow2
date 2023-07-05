@@ -28,3 +28,7 @@ This should output:
 ssh username@poseidon.whoi.edu
 ```
 Log in using your WHOI username and password. This will require you to set up a one-time MobaXTerm password. Set that up and save it somewhere.
+
+### Possibly useful links
+[UTS HPC Documentation](https://hpc.research.uts.edu.au/getting_started/running/)
+
