@@ -29,7 +29,7 @@ ssh username@poseidon.whoi.edu
 ```
 Log in using your WHOI username and password. This will require you to set up a one-time MobaXTerm password. Set that up and save it somewhere.
 
-### Getting onto MATLAB
+### Getting onto MATLAB (interactively)
 Check which MATLAB modules are available on Poseidon
 ```
 module avail matlab
@@ -41,25 +41,60 @@ The options should be:
 * matlab/r2020b
 * matlab/r2022a
 
-Load the appropriate module file
+Load the appropriate module file (the bottom code will give you the default MATLAB r2020a
 ```
-module load MATLAB/2020a
+module load matlab
 ```
-
 Add your MATLAB script (scriptname.m) to your Poseidon directory
+Then enter
+```
+matlab /vortexfs1/scratch/mgalochkina/SLURM/scriptName.m
+```
+This will open Poseidon's MATLAB GUI, where you can run things just as you would on your PC. Not sure if this is any faster?
 
-Run MATLAB (this is based on the YCRC code -- might be slightly different for Poseidon?)
+### Getting onto MATLAB (non-interactively)
+#### AKA your command line becomes MATLAB's command window
+```
+module load matlab
+matlab -nodisplay /vortexfs1/scratch/mgalochkina/SLURM/scriptName.m
+```
+
+### Submitting a MATLAB script to Poseidon
+Below is an example script. I entered the script into Notepad++ and saved as a .sh file named ERA5_get.sh
+
 ```
 #!/bin/bash
-#SBATCH --job-name myjob
-#SBATCH --cpus-per-task 4
-#SBATCH --mem 18G
-#SBATCH -t 8:00:00
+#SBATCH --partition=compute         # Queue selection
+#SBATCH --job-name=serial_job       # Job name
+#SBATCH --mail-type=END             # Mail events (BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=email@whoi.edu  # Where to send mail
+#SBATCH --ntasks=1                  # Run on a single CPU
+#SBATCH --mem=1gb                   # Job memory request
+#SBATCH --time=00:15:00             # Time limit hrs:min:sec
+#SBATCH --output=serial_job_%j.err  # Standard error
+#SBATCH --output=serial_job_%j.out  # Standard output
+##SBATCH --nodelist=pn[041-048,086] # Nodes to include
+##SBATCH --exclude=pn[007-020].     # Nodes to exclude
 
-module load MATLAB/2021a
-# assuming you have your_script.m in the current directory
-matlab -batch "your_script"
+echo "Running on node(s): $SLURM_NODELIST starting in: `pwd`"
+date
+
+module load matlab                  # Load the matlab module
+ 
+# echo "Running graph script on a single CPU core"
+ 
+matlab -nodisplay -nosplash -nodesktop /vortexfs1/scratch/mgalochkina/SLURM/ERA5_get.m
+ 
+date
 ```
+
+When I ran this, I encountered the following error (below). I was able to fix this using the (following link)[https://wikis.ovgu.de/hpc/doku.php?id=guide:dos_unix_linebreaks].
+
+```
+sbatch: error: Batch script contains DOS line breaks (\r\n)
+sbatch: error: instead of expected UNIX line breaks (\n).
+```
+
 ### Possibly useful links
 [UTS HPC Documentation](https://hpc.research.uts.edu.au/getting_started/running/)
 
