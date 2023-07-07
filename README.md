@@ -88,7 +88,7 @@ matlab -nodisplay -nosplash -nodesktop /vortexfs1/scratch/mgalochkina/SLURM/ERA5
 date
 ```
 
-When I ran this, I encountered the following error (below). I was able to fix this using the (following link)[https://wikis.ovgu.de/hpc/doku.php?id=guide:dos_unix_linebreaks].
+When I ran this, I encountered the following error (below). I was able to fix this using the [following link](https://wikis.ovgu.de/hpc/doku.php?id=guide:dos_unix_linebreaks).
 
 ```
 sbatch: error: Batch script contains DOS line breaks (\r\n)
