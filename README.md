@@ -127,5 +127,19 @@ squeue -u mgalochkina
 ```
 
 ```
-sbatch run-jupyterlab.sh
+sbatch scriptname.m
+```
+CHange directory back to prev one
+```
+cd ~
+```
+
+cancel job
+```
+scancel 48494849 # job ID number OR
+scancel -n  jobname
+```
+Turn off connection to Poseidon (this will lead you back to your own terminal)
+```
+exit
 ```
