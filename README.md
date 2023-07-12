@@ -98,3 +98,34 @@ sbatch: error: instead of expected UNIX line breaks (\n).
 ### Possibly useful links
 [UTS HPC Documentation](https://hpc.research.uts.edu.au/getting_started/running/)
 
+### Stuff from Shawn
+```
+module load anaconda
+module list
+cat ERA5_get.m % shows you contents of file
+```
+### Random Bits and Bobs
+hash with space = comments
+hash with NO space = an actual line of code in bash
+
+Unix has *vi* editor that helps edit code in the command line
+
+### Submitting queues
+See who is running what
+```
+squeue -h
+```
+
+Types of nodes:
+-compute (the most common one)
+-scavenger (only uses the nodes when nobody else is using it)
+-bigmem
+
+See what you're running
+```
+squeue -u mgalochkina
+```
+
+```
+sbatch run-jupyterlab.sh
+```
