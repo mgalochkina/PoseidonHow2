@@ -127,7 +127,7 @@ squeue -u mgalochkina
 ```
 
 ```
-sbatch scriptname.m
+sbatch scriptname.sh
 ```
 CHange directory back to prev one
 ```
@@ -142,4 +142,11 @@ scancel -n  jobname
 Turn off connection to Poseidon (this will lead you back to your own terminal)
 ```
 exit
+```
+
+
+### More Poseidon things
+to point to the actual data in Poseidon (NOT where you mounted the drive on your computer):
+```
+cd /vortexfs1/share/clidex/
 ```
