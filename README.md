@@ -149,4 +149,5 @@ exit
 to point to the actual data in Poseidon (NOT where you mounted the drive on your computer):
 ```
 cd /vortexfs1/share/clidex/
+cd /vortexfs1/share/cmip6
 ```
