@@ -151,3 +151,12 @@ to point to the actual data in Poseidon (NOT where you mounted the drive on your
 cd /vortexfs1/share/clidex/
 cd /vortexfs1/share/cmip6
 ```
+
+to copy files from your computer to poseidon (must not be ssh'ed into Poseidon! it will prompt you to log in)
+```
+scp filename -oUser=ADMIN\\username poseidon.whoi.edu:/vortexfs1/home/username
+```
+example:
+```
+scp /Volumes/mariaSSD/CuracaoMAT/1601.mat -oUser=ADMIN\\mgalochkina poseidon.whoi.edu:/vortexfs1/home/mgalochkina
+```
