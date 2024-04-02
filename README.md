@@ -1,7 +1,7 @@
 # PoseidonHow2
-a guide for using WHOI's HPC cluster (Poseidon) on Windows for dummies (me) 
+a guide for using WHOI's HPC cluster (Poseidon) on Windows for dummies (me). it might help you too. it might not.
 
-# Getting onto Poseidon (Windows)
+# Getting onto Poseidon 
 ### Option 1: Command Line
 Open Command Line
 ```
@@ -21,7 +21,7 @@ This should output:
 ```
 /vortexfs1/home/username
 ```
-### Option 2: download MobaXTerm
+### Option 2 (Windows): download MobaXTerm
 1. Download [MobaXTerm](https://mobaxterm.mobatek.net/).
 2. Set up SSH keys (should just work on it's own)
 ```
@@ -153,10 +153,11 @@ cd /vortexfs1/share/cmip6
 ```
 
 to copy files from your computer to poseidon (must not be ssh'ed into Poseidon! it will prompt you to log in)
+below is what hpc.whoi.edu says to do
 ```
-scp filename -oUser=ADMIN\\username poseidon.whoi.edu:/vortexfs1/home/username
+scp filename -oUser=ADMIN\\username poseidon.whoi.edu:/vortexfs1/home/username 
 ```
-example:
+below is the edited example that seemed to actually work
 ```
-scp /Volumes/mariaSSD/CuracaoMAT/1601.mat -oUser=ADMIN\\mgalochkina poseidon.whoi.edu:/vortexfs1/home/mgalochkina
+scp /Users/mariya/Documents/MATLAB/hex2rgb.m mgalochkina@poseidon.whoi.edu:/vortexfs1/home/mgalochkina
 ```
